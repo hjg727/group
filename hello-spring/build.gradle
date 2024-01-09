@@ -1,0 +1,28 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.0'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+//그냥 gradle이 버전 설정하고 라이브러리들을 땡겨오는구나.
+
+group = 'hello'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {//밑에 라이브러리두개를사용하려면다운로드받아야되는데 어떻게 받았냐
+	//mavenCentral에서 다운로드받아라 라고 설정해놓은것이다.
+	mavenCentral()
+}
+
+dependencies {//우리가 추가한 web,thymeleaf 고정적인 starter-test
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
